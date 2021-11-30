@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="UTF-8">
+	<title>Exemple 1</title>
+	<script src="jquery.js"></script>
+	<script>
+		window.onload = function(){
+			jQuery('h1').css('color','orange');
+			jQuery('p').css('font-style','italic');
+
+			jQuery('h3').html('Nouveau texte pour le titre').css('transform','rotate(3deg)');
+
+			$('h2').html('Petit changement de texte');
+
+			$('#special').css('background-color','salmon');
+			$('.dernier').css('margin-top','30px');
+		};
+	</script>
+</head>
+<body>
+	<h1>Exemple 1</h1>
+	<section>
+		<h2>Sous-titre</h2>
+		<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fuga consequatur incidunt vitae atque iusto ea perferendis veritatis unde nobis deserunt, voluptatibus, nesciunt ad natus explicabo ipsum modi dolore facilis enim.</p>
+		<p id="special">Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima officiis quisquam eveniet, cum accusantium veritatis error corporis, asperiores quas, incidunt iste ut inventore obcaecati nisi repellat facere eius. Minus, id.</p>
+		<p class="dernier">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officiis, deserunt? Eos in unde ab quisquam voluptas deleniti error aut est possimus. Possimus obcaecati distinctio commodi consectetur deserunt! Culpa, unde fugiat.</p>
+	</section>
+	<aside>
+		<h3>Petit titre</h3>
+		<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam harum tenetur et, ratione eos nobis exercitationem sed asperiores? Mollitia minus dolorem iure, modi delectus officiis quo provident minima doloribus qui!</p>
+		<p class="dernier">Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias harum nostrum, qui blanditiis excepturi fuga tempore! Delectus nobis, quam aliquid laborum nostrum voluptatibus architecto aut. Porro architecto vitae repudiandae consequuntur.</p>
+	</aside>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="UTF-8">
+	<title>Exemple 2</title>
+	<script src="jquery.js"></script>
+	<script>
+		$(function() {
+			$('#clique').click(function() {
+				$('.boite div:first-child').css('background','yellow');
+			});
+			$('#survole').mouseenter(function() {
+				$('.boite div:last-child').addClass('changement');
+			});
+		});
+	</script>
+	<style>
+		.buttons, .boite {
+			display: flex;
+			justify-content: space-around;
+		}
+		
+		.buttons {
+			margin-bottom: 50px;
+		}
+
+		.boite div:first-child, .boite div:last-child{
+			height: 200px;
+			width: 300px;
+		}
+		
+		.boite div:first-child{
+			background-color: red;
+		}
+
+		.boite div:last-child{
+			background-color: coral;
+		}
+
+		.boite div.changement {
+			background-color: mediumspringgreen;
+		}
+	</style>
+</head>
+<body>
+	<h1>Exemple 2</h1>
+	<div class="buttons">
+		<button id="clique">Cliquez</button>
+		<button id="survole">Survolez</button>
+	</div>
+	<div class="boite">
+		<div></div>
+		<div></div>
+	</div>
+</body>
+</html>
