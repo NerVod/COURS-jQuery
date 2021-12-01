@@ -4,6 +4,7 @@
 		<meta charset="utf-8"/>
 		<title>jQuery : Exercice 12</title>
 		<link rel="stylesheet" href="../src/styles.css">
+		<script src="../jquery.js"></script>
 		<script>
       /*********************************
       ***********PRESENTATION***********
@@ -21,14 +22,81 @@
 
         Utilisez les méthodes text(), hover(), mouseenter(), mouseleave(), click() et setTimeout.
       */
+			$(function() {
+			
+
+
+			var apparition = function(){
+				$('.leChat').addClass('cache')
+			}
+
+			var disparition = function() {
+				$('.leChat').removeClass('cache')
+			}
+
+			var condition = function() {
+				if($('.leChat').hasClass('cache')){
+					disparition();
+				}else {
+					apparition();
+				}
+
+			}
+
+			$('p').hover(function() {
+				condition();
+				
+			});
+
+
+			
+
+			/////////// ?????????????????????  affichage longueur du paragraphe survolé
+
+			$('p').mouseenter(function (){
+				var paragraphe = $("p",this ).text().length;
+				console.log(paragraphe);
+				$('h1').text(paragraphe)
+
+			});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			})
+
+
 
 		</script>
+		<style>
+			.leChat {
+				position: absolute;
+				top: 2px;
+				right: 100px;
+			}
+			.cache {
+				visibility: hidden
+			}
+		</style>
 	</head>
 	<body>
 		<div id="page">
 			<header>
 				<h1>Titre du site</h1>
 				<h2>Sous-titre du site</h2>
+				<img class = "leChat cache" src="grandChatMini.jpg" alt="">
 				<nav>
 					<ul>
 						<li>
@@ -128,5 +196,13 @@
 		<noscript>
 			<p>Veuillez activer JavaScript</p>
 		</noscript>
+		<script>
+			$('p').mouseenter(function (){
+				var paragraphe = $("p",this ).text().length;
+				console.log(paragraphe);
+				$('h1').text(paragraphe)
+
+			});
+		</script>
 	</body>
 </html>

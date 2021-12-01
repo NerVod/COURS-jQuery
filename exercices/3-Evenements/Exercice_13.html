@@ -4,6 +4,7 @@
 		<meta charset="utf-8"/>
 		<title>jQuery : Exercice 13</title>
 		<link rel="stylesheet" href="../src/styles.css">
+		<script src="../jquery.js"></script>
 		<script>
   /*********************************
   ***********PRESENTATION***********
@@ -21,6 +22,14 @@
     Utilisez les méthodes mousemove(), click() et css().
 
   */
+
+		$(function() {
+
+			var leTitre = $('h1');
+
+
+		});
+
 
 		</script>
 	</head>
@@ -128,5 +137,35 @@
 		<noscript>
 			<p>Veuillez activer JavaScript</p>
 		</noscript>
+		<script>
+			
+
+var leTitre = $('h1');
+var laMarge = 0;
+var margeQuiBouge = parseFloat(leTitre.marginLeft)
+
+leTitre.hover(function() {
+	leTitre.css('margin-left' ," (margeQuiBouge + 1) + 'px'")
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		</script>
 	</body>
 </html>
