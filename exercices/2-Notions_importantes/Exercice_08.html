@@ -5,6 +5,7 @@
 	<meta charset="utf-8" />
 	<title>jQuery : Exercice 8</title>
 	<link rel="stylesheet" href="../src/styles.css">
+	<script src="../jquery.js"></script>
 	<script>
 		/*********************************
 		***********PRESENTATION***********
@@ -20,12 +21,24 @@
 			À la fin du chargement du document, modifiez le texte et le lien de la première entrée du menu.
 			Utilisez text() et attr().
 		*/
+		$(function() {
+			$lien = $('nav>ul>li:first-child>a');
+			$lien.text('lien transformé');
+			$lien.attr('href', 'https://www.google.com'); 
 
-		/*
-		** 2 **
+
+
+			
+			/*
+			** 2 **
 			À la fin du chargement du document, désactivez les champs input sauf le champ téléphone.
 			Utilisez attr() et removeAttr().
-		*/
+			*/
+			
+			$('form input').attr('disabled', 'true');
+			$('form  [type="tel"]').removeAttr('disabled');
+
+		});
 
 	</script>
 </head>

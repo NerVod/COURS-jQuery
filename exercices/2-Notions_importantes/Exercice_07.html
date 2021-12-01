@@ -52,7 +52,10 @@
 			À la fin du chargement du document, créez un nouvel objet Date. À partir de cet objet, affichez dans le bouton submit, le texte du bouton suivi  "le [jour de la semaine]" où [jour de la semaine] correspond au jour de la semaine sous forme textuelle.
 			Utilisez l'objet Date, la méthode getDay de l'objet Date et attr().
 		*/
-		
+		maintenant = new Date;
+		$bouton =$('form [name=envoyer]');
+		$bouton.attr('value', $bouton.attr('value') + ' le ' + leJour[maintenant.getDay()]);
+
 		 
 
 
