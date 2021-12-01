@@ -142,10 +142,16 @@
 
 var leTitre = $('h1');
 var laMarge = 0;
-var margeQuiBouge = parseFloat(leTitre.marginLeft)
 
-leTitre.hover(function() {
-	leTitre.css('margin-left' ," (margeQuiBouge + 1) + 'px'")
+leTitre.mousemove(function() {
+	var margeQuiBouge = parseFloat(leTitre.css('margin-left'));
+	var nouvelleMarge = margeQuiBouge + 1;
+	console.log(nouvelleMarge);
+	leTitre.css('margin-left' , nouvelleMarge + 'px')
+});
+
+leTitre.click(function() {
+leTitre.css('margin-left', 0);
 
 });
 
