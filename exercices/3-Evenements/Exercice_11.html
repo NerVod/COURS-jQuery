@@ -4,6 +4,7 @@
 		<meta charset="utf-8"/>
 		<title>jQuery : Exercice 11</title>
 		<link rel="stylesheet" href="../src/styles.css">
+		<script src="../jquery.js"></script>
 		<script>
       /*********************************
       ***********PRESENTATION***********
@@ -23,7 +24,67 @@
 
         Utilisez les méthodes click(), dblclick() et css().
       */
+	 
+	 $(function() {
+		  	
+		// $('#chatThumbnail').click(function() {
+
+		// 	if($('#chat').hasClass('cache')) {
+		// 		$('#chat').removeClass("cache")
+		// 	} else {
+		// 		$('#chat').addClass("cache")
+		// 	}
+		// });
+
+		// $('#oursThumbnail').dblclick(function() {
+
+		// 	if($('#ours').hasClass('cache')) {
+		// 		$('#ours').removeClass("cache")
+		// 	} else {
+		// 		$('#ours').addClass("cache")
+		// 	}
+		// });
+
+$('.trigger1').click(function() {
+
+	if ($('.cible2').hasClass("cache")) {
+
+		$('.cible2').removeClass('cache')
+	} else {
+		$('.cible2').addClass('cache')
+	}
+
+});
+$('.trigger2').click(function() {
+
+	if ($('.cible1').hasClass("cache")) {
+
+		$('.cible1').removeClass('cache')
+	} else {
+		$('.cible1').addClass('cache')
+	}
+
+});
+
+
+
+
+
+
+
+
+
+
+
+			})
+
+
 		</script>
+		<style>
+			.cache {
+				visibility: hidden;
+			}
+		</style>
 	</head>
 	<body>
 		<div id="page">
@@ -125,6 +186,14 @@
 						<input type="submit" name="envoyer" value="Envoyer">
 					</div>
 				</form>
+				<div>
+					<div ><img id ="chat" class="cible1" src="grandChat.jpg" alt="chat"></div>
+					<div><img  id = "chatThumbnail" class ="trigger1" src="grandChatMini.jpg" alt="chat mini"></div>
+				</div>
+				<div>
+					<div><img  id ="ours" class = "cible2" src="ours.jpeg" alt="ours"></div>
+					<div><img  id = "oursThumbnail" class ="trigger2" src="oursMini.jpeg" alt="ours mini"></div>
+				</div>
 		</div>
 		<noscript>
 			<p>Veuillez activer JavaScript</p>

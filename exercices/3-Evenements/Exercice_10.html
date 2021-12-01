@@ -4,6 +4,7 @@
 		<meta charset="utf-8"/>
 		<title>jQuery : Exercice 10</title>
 		<link rel="stylesheet" href="../src/styles.css">
+		<script src="../jquery.js"></script>
 		<script>
       /*********************************
       ***********PRESENTATION***********
@@ -25,17 +26,70 @@
 
         Utilisez les méthodes resize(), css(), addClass() et removeClass().
       */
+	 $(function() {
+		 $(window).resize(function(){ 
+			 var $largeur = $(document).width();
+			 var $laPage = $('#page')
+			 console.log($largeur);
+			if($largeur <= 920){
+				 $('section div').addClass('changeColonne')
+				}
+			if($largeur <= 640){
+					$('#page p').addClass('changePolice')
+				}
+			if($largeur > 920){
+					$('section div').removeClass('changeColonne');
+					$('#page p').removeClass('changePolice')
+				};
+			});
+				
+		
+		 /*
+		 ** 2 **
+		 À la fin du chargement du document, prévoyez le script suivant :
+		 a) Chaque fois que vous utilisez l'ascenseur vertical, affichez une petite image sur le bord gauche et au milieu (utilisez fixed en css).
+		 b) Quand le mouvement s'arrête, masquez cette image.
+		 
+		 Utilisez les méthodes scroll() et css().
+		 */
+		var image = window.document.createElement('img');
+	   image.title = 'un chat';
+	   image.src = 'chat.png';
+	   image.style.width = '80px';
+	   image.style.height = '120px'
+	   image.style.position = 'fixed';
+	   image.style.top = '40%';
+	   image.style.left = '50px';
+	   image.style.marginLeft = '-500px';
+	   window.document.body.appendChild(image);
+		
+		$(window).scroll(function() {	
 
-      /*
-      ** 2 **
-        À la fin du chargement du document, prévoyez le script suivant :
-        a) Chaque fois que vous utilisez l'ascenseur vertical, affichez une petite image sur le bord gauche et au milieu (utilisez fixed en css).
-        b) Quand le mouvement s'arrête, masquez cette image.
+		 $('img').css('marginLeft', '-15px');
 
-        Utilisez les méthodes scroll() et css().
-      */
+		 
+		 });
 
+
+		 
+
+
+
+
+		
+	});
 		</script>
+	<style>
+		.changeColonne {			
+		flex-direction: column;
+		};
+
+		.changePolice {
+		font-size: 8px;
+		}
+
+	</style>
+
 	</head>
 	<body>
 		<div id="page">
@@ -141,5 +195,8 @@
 		<noscript>
 			<p>Veuillez activer JavaScript</p>
 		</noscript>
+		<script>
+		
+		</script>
 	</body>
 </html>
