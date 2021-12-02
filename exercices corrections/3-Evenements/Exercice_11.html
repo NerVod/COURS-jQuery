@@ -2,39 +2,75 @@
 <html>
 	<head>
 		<meta charset="utf-8"/>
-		<title>jQuery : Exercice 17</title>
+		<title>jQuery : Exercice 11</title>
 		<link rel="stylesheet" href="../src/styles.css">
 		<script src="../jquery.js"></script>
 		<script>
-			/*********************************
-			***********PRESENTATION***********
-			**********************************
-			  Il est souvent utile de parcourir les éléments sélectionnés. C'est ce que permet de faire la méthode each().
-			  Par exemple :
-			  $('p').each(function(){
-			    var texte = $(this).html();
-			    $(this).html() = texte + ' un ajout';
-			  });
-			  Ici, tous les paragraphes sont parcourus et le texte ' un ajout' est ajouté à la fin de chaque paragraphe.
-			*/
+      /*********************************
+      ***********PRESENTATION***********
+      **********************************
+        Les méthodes click() et dblclick() permettent de capturer les événements liés aux actions sur la souris et à déclencher une fonction.
+      */
 
-			/**********************************
-			*************EXERCICES*************
-			***********************************
-			  À la fin du chargement du document, prévoyez le script suivant :
-			  Quand l'utilisateur change de balise input, l'ensemble des valeurs qu'il a saisit sont affichées dans la div message.
+      /**********************************
+      *************EXERCICES*************
+      ***********************************
+        Préalablement, insérez deux images et leurs miniatures correspondantes. Seules les miniatures doivent être visibles.
+        
+        À la fin du chargement du document, prévoyez le script suivant :
+        a) Un clic sur la première miniature fait apparaître la première image puis un second clic la masque.
+        b) Le même comportement a lieu sur la seconde miniature sauf qu'il est nécessaire d'utiliser le double clic.
+        c) Améliorez le code. Si une image est visible, le clic sur la miniature correspondant à l'autre image masque l'image visible et afficher l'autre.
 
-			  Utilisez les méthodes each(), focus() et text().
-			*/
-			$(function() {
-
-
-
-
-
-			});
-
+        Utilisez les méthodes click(), dblclick() et css().
+      */
+	 $(function() {
+		let $premiereImage = $('.grandes img:first-child');
+		let $deuxiemeImage = $('.grandes img:last-child');
+		const masquer = function() {
+			$('.grandes img').css('display','none');
+		};
+		$('.miniatures img:first-child').click(function() {
+			if ($premiereImage.css('display') == 'none') {
+				masquer();
+				$premiereImage.css('display','inline');
+			} else {
+				$premiereImage.css('display','none');
+			}
+		});
+		$('.miniatures img:last-child').dblclick(function() {
+			if ($deuxiemeImage.css('display') == 'none') {
+				masquer();
+				$deuxiemeImage.css('display','inline');
+			} else {
+				$deuxiemeImage.css('display','none');
+			}
+		});
+	 });
 		</script>
+		<style>
+			.miniatures {
+				margin-bottom: 30px;
+				text-align: center;
+				width: 100%;
+			}
+
+			.miniatures img {
+				display: inline-block;
+				margin: 0 8%;
+				width: 300px;
+			}
+
+			.grandes {
+				margin-bottom: 50px;
+				width: 100%;
+			}
+
+			.grandes img {
+				display: none;
+				width: 100%;
+			}
+		</style>
 	</head>
 	<body>
 		<div id="page">
@@ -70,8 +106,15 @@
 					</ul>
 				</nav>
 			</header>
+			<div class="miniatures">
+				<img src="paysage-1.jpg" alt="Un paysage">
+				<img src="paysage-2.jpg" alt="Un paysage">
+			</div>
+			<div class="grandes">
+				<img src="paysage-1.jpg" alt="Un paysage">
+				<img src="paysage-2.jpg" alt="Un paysage">
+			</div>
 			<section>
-				<div id="message"></div>
 				<p>
 					Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
 				</p>

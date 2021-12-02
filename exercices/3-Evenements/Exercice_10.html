@@ -28,17 +28,17 @@
       */
 	 $(function() {
 		 $(window).resize(function(){ 
-			 var $largeur = $(document).width();
+			 var $largeur = $('body').width();
 			 var $laPage = $('#page')
 			 console.log($largeur);
 			if($largeur <= 920){
-				 $('section div').addClass('changeColonne')
-				}
-			if($largeur <= 640){
-					$('#page p').addClass('changePolice')
+				 $('body').addClass('changeColonne')
+				 if($largeur <= 640){
+						 $('#page p').addClass('changePolice')
+					 }
 				}
 			if($largeur > 920){
-					$('section div').removeClass('changeColonne');
+					$('body').removeClass('changeColonne');
 					$('#page p').removeClass('changePolice')
 				};
 			});
@@ -85,7 +85,7 @@
 		};
 
 		.changePolice {
-		font-size: 8px;
+		font-size: 0.8em;
 		}
 
 	</style>

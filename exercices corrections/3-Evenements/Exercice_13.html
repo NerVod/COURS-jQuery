@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>jQuery : Exercice 13</title>
+		<link rel="stylesheet" href="../src/styles.css">
+		<script src="../jquery.js"></script>
+		<script>
+  /*********************************
+  ***********PRESENTATION***********
+  **********************************
+    La méthode mousemove() permettent de capturer l'évènements lié au mouvement de la souris sur un élément.
+  */
+
+  /**********************************
+  *************EXERCICES*************
+  ***********************************
+    À la fin du chargement du document, prévoyez le script suivant :
+    a) Quand vous survolez la balise, celle-ci se déplace d'un pixel à chaque mouvement de la souris.
+    b) Quand vous cliquez sur la même balise, celle-ci revient à sa place initiale.
+    
+    Utilisez les méthodes mousemove(), click() et css().
+
+  */
+			$(function() {
+				$('.boite')
+					.mousemove(function() {
+						$(this).css('left',parseFloat($(this).css('left')) + 1);
+					})
+					.click(function() {
+						$(this).css('left',0);
+					});
+			});
+		</script>
+		<style>
+			.boite {
+				background-color: crimson;
+				height: 100px;
+				left: 0;
+				position: absolute;
+				top: 0;
+				width: 100px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="boite"></div>
+	</body>
+</html>

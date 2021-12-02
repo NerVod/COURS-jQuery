@@ -32,20 +32,54 @@
 
 				Utilisez les méthodes delay() et animate().
 			*/
-
+			$(function(){
+				// $('img').delay(3000).animate({width:100,opacity:0.3},1000);
 			/*
 			** 2 **
 				Pour l'instant, l'animation s'applique aux trois images en même temps. D'une part, il est possible d'exécuter une fonction à la fin de nombreuses méthodes jQuery dont animate(); d'autre part, on peut sélectionner un seul élément avec la méthode first() puis chaque élément qui suit avec next().
 				Animez successivement en deux secondes les images.
 
-				Utilisez les méthodes delay(), first(), animate() et next(). Utilisez le principe de récursivité (une fonctionne qui s'appelle elle-même).
+				Utilisez les méthodes delay(), first(), animate() et next(). Utilisez le principe de récursivité (une fonction qui s'appelle elle-même).
 			*/
+				const animation = function($cible) {
+					$cible.delay(2000).animate({width:100,opacity:0.3},1000,function() {
+						$parentActuel = $(this).parent();
+						if ($parentActuel.next().length) {
+							animation($parentActuel.next().children());
+						}
+					});
+				};
 
-
-		</script>
-	</head>
-	<body>
-
+				animation($('img').first());
+			});
+			</script>
+			<style>
+				.conteneur {
+				  display: flex;
+				  width: 100%;
+				}
+		  
+				.conteneur div{
+				  flex-basis: 33.333%;
+				}
+		  
+				img {
+				  width: 300px;
+				}
+			  </style>
+		  </head>
+		  <body>
+		  <div class="conteneur">
+			<div>
+			  <img id="image1" src="paysage-1.jpg" alt="Paysage">
+			</div>
+			<div>
+			  <img id="image2" src="paysage-2.jpg" alt="Paysage">
+			</div>
+			<div>
+			  <img id="image3" src="paysage-3.jpg" alt="Paysage">
+			</div>
+		  </div>
 		<noscript>
 			<p>Veuillez activer JavaScript</p>
 		</noscript>

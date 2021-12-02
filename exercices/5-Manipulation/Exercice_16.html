@@ -4,6 +4,7 @@
 		<meta charset="utf-8"/>
 		<title>jQuery : Exercice 16</title>
 		<link rel="stylesheet" href="../src/styles.css">
+		<script src="../jquery.js"></script>
 		<script>
       /*********************************
       ***********PRESENTATION***********
@@ -23,16 +24,70 @@
 
       	Utilisez la méthode after().
       */
+	 $(function() {
+
+		$('p').after('<hr/>')
 
       /*
       ** 2 **
       	Ajoutez une image entre deux paragraphes. Au chargement du document, un cercle plein est placé à chaque coin de l'image, derrière celle-ci (indice : mettez l'image dans une div. Cette div contiendra quatre span positionnées aux angles de cette div).
-
+		
       	Utilisez prepend() et append().
       */
+	 $('div').prepend('<span class="un"></span><span class="deux"></span>');
+	 $('div').append('<span class="trois"></span><span class="quatre"></span>');
+
+	});
     </script>
+	<style>
+		.conteneur {
+			position: absolute;
+			margin-left: 10%;
+		}
+		img {
+			height: 250px;
+		}
+
+		span {
+			height: 20px;
+			width: 20px;
+			background-color: chocolate;
+			border-radius: 50% ;
+			position: absolute;
+			display: inline-block;
+		};
+
+		.un {
+			left: -10px;
+			top: -10px;
+		}
+		.deux {
+			right: -10px;
+			top: -10px;
+		}
+		.trois {
+			right: -10px;
+			bottom: -10px;
+		}
+		.quatre {
+			left: -10px;
+			bottom: -10px;
+		}
+		
+
+	</style>
 	</head>
 	<body>
+		<h1>titre 1</h1>
+		<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt reprehenderit doloribus commodi voluptates dolor accusantium?</p>
+		<div class ='conteneur'>
+			<img src="grandChat.jpg" alt="">
+		</div>
+		<h1>titre 2</h1>
+		<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est accusamus dolorum exercitationem nostrum tempore ex, dolor ab sapiente nobis in architecto porro deserunt molestiae numquam omnis, et distinctio dolores iste.</p>
+		<h1>titre 3</h1>
+		<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Pariatur reiciendis labore in dolores ex asperiores alias porro.</p>
+	
 
 		<noscript>
 			<p>Veuillez activer JavaScript</p>

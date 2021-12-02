@@ -3,7 +3,6 @@
 	<head>
 		<meta charset="utf-8"/>
 		<title>jQuery : Exercice 15</title>
-		<link rel="stylesheet" href="../src/styles.css">
 		<script src="../jquery.js"></script>
 		<script>
 			/*********************************
@@ -28,69 +27,57 @@
 
 			Utilisez les méthodes height(), width() et setInterval().
 			*/
+			let $div;
+			let dimensionsFenetre = {};
+			let evolution = 5;
+			$(function() {
+				dimensionsFenetre.hauteur = $(window).height();
+				dimensionsFenetre.largeur = $(window).width();
 
+				$div = $('div');
+
+				setInterval(function() {
+					let hauteur = $div.height();
+					let largeur = $div.width();
+					if ($div.innerHeight() * 2 > dimensionsFenetre.hauteur || $div.innerWidth() * 2 > dimensionsFenetre.largeur || hauteur < 10) {
+						evolution = -evolution;
+					}
+					$div.height(hauteur + evolution);
+					$div.width(largeur + evolution);
+				},1000);
 			/*
 			** 2 **
 			Améliorez le code, toutes les 10 secondes, le padding augmente de 5px.
 
 			Utilisez les méthodes css() et setInterval().
 			*/
-
+				setInterval(function() {
+					let padding = parseFloat($div.css('padding-left'));
+					$div.css('padding',padding + (2 * evolution));
+				},10000);
 			/*
 			** 3 **
-			Pour l'instant, le bloc augmente sans cesse de taille. Quand le bloc a une largeur supérieure à 50% de la largeur ou une hauteur supérieure à 50% de la hauteur de la fenêtre, inversé le mouvement :
+			Pour l'instant, le bloc augmente sans cesse de taille. Quand le bloc a une largeur supérieure à 50% de la largeur ou une hauteur supérieure à 50% de la hauteur de la fenêtre, inversez le mouvement :
 			_ toutes les secondes la largeur et la hauteur augmente de 5px
 			_ toutes les 10 secondes, le padding se réduit de 5px.
 
-			Quand la div revient à sa dimension initiale, sa augmente à nouveau.
+			Quand la div revient à sa dimension initiale, sa taille augmente à nouveau.
 
 			Utilisez les méthodes height(), innerHeight(), width(), innerWidth() et setInterval().
 			*/
-			$(function() {
-
-				
-				setInterval(function() {
-					let $laHauteur = $('.carre').height();
-					let $laLargeur = $('.carre').width();
-
-						$('.carre').height($laHauteur + 5);
-						$('.carre').width($laLargeur + 5);
-					
-					
-				},1000);
-				
-				setInterval(function() {
-					let $lePadding = parseFloat($('.carre').css('padding')) ;
-					
-					
-					$('.carre').css('padding',($lePadding +5))
-					
-					
-				},10000);
-		
-
-			
-
-
-
-
-
-
-
 			});
-
 		</script>
 		<style>
-			.carre {
-				height : 20px;
-				width : 20px;
-				padding: 10px;
+			div {
 				background-color: coral;
+				height: 20px;
+				padding: 10px;
+				width:20px;
 			}
 		</style>
 	</head>
 	<body>
-		<div class = 'carre'></div>
+		<div></div>
 		<noscript>
 			<p>Veuillez activer JavaScript</p>
 		</noscript>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>jQuery : Exercice 14</title>
+		<script src="../jquery.js"></script>
+		<script>
+      /*********************************
+      ***********PRESENTATION***********
+      **********************************
+        Il est possible avec jQuery d'intercepter l'usage des touches de clavier :
+        keypress() : appui et maintien sur la touche du clavier
+        keyup() : appui sur la touche du clavier
+        keydown() : relâchement d'une touche du clavier
+        
+        Par exemple :
+        $('div').keypress(function(evenement){
+          console.log(evenement.which).
+        });
+        
+        La valeur de la touche enfoncée est renvoyé ici (dans le cas de keyup et keydown, il s'agit du code ASCII de la touche).
+        
+      */
+
+      /**********************************
+      *************EXERCICES*************
+      ***********************************
+        Créez une page vide contenant un petit bloc coloré.
+        À la fin du chargement du document, prévoyez le script suivant :
+        a) Dirigez le bloc dans la page avec les touches fléchées.
+        b) Le bloc change de couleur durant le mouvement.
+        
+        N.B. : les ascenseurs de la fenêtre ne doivent pas bouger (utilisez evenement.preventDefault()).
+        
+        Utilisez les méthodes keyup(), keydown() et css().
+
+      */
+		const donneCouleur = function() {
+			let couleur = 'rgba(';
+			for (let i=0;i<3;i++) {
+				couleur += Math.floor(Math.random() * 255) + ',';
+			}
+			let transparence = 0;
+			while (transparence < 0.5) {
+				transparence = Math.round(Math.random() * 100) / 100;
+			}
+			couleur += transparence + ')';
+			return couleur;
+		};
+
+		$(function() {
+			const $boite = $('.boite');
+			const mouvement = function(direction,deplacement) {
+				let positionActuelle = parseFloat($boite.css(direction));
+				$boite.css(direction,positionActuelle + deplacement).css('background',donneCouleur());
+			};
+			$(window).keydown(function(event) {
+				event.preventDefault();
+				switch(event.which) {
+					// haut : 38
+					case 38:
+						mouvement('top',-1);
+						break;
+					// bas : 40
+					case 40:
+						mouvement('top',1);
+						break;
+					// gauche : 37
+					case 37:
+						mouvement('left',-1);
+						break;
+					// droite : 39
+					case 39:
+						mouvement('left',1);
+						break;
+				}
+			})
+		})
+		</script>
+		<style>
+			.boite {
+				background-color: crimson;
+				height: 100px;
+				left: 0;
+				position: absolute;
+				top: 0;
+				width: 100px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="boite"></div>
+	</body>
+</html>

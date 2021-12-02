@@ -23,13 +23,48 @@
         À la fin du chargement du document, prévoyez le script suivant :
         Quand l'utilisateur survole une image, les autres images ont une opacité réduite. Quand le survol cesse, toutes les images reviennent à l'opacité de départ.
 
-        Utilisez les méthodes mousenter(), mouseleave() et fadeTo().
+        Utilisez les méthodes mouseenter(), mouseleave() et fadeTo().
       */
-      
+     const time = 300;
+      $(function() {
+        $('img')
+          .mouseenter(function() {
+            console.log('action');
+            let cible = $(this).attr('id');
+            $('img:not(#' + cible + ')').fadeTo(time,0.3);
+          })
+          .mouseleave(function() {
+            $('img').fadeTo(time,1);
+          });
+      });
       </script>
+          <style>
+            .conteneur {
+              display: flex;
+              width: 100%;
+            }
+      
+            .conteneur div{
+              flex-basis: 33.333%;
+            }
+      
+            img {
+              width: 300px;
+            }
+          </style>
   	</head>
   	<body>
-
+      <div class="conteneur">
+        <div>
+          <img id="image1" src="paysage-1.jpg" alt="Paysage">
+        </div>
+        <div>
+          <img id="image2" src="paysage-2.jpg" alt="Paysage">
+        </div>
+        <div>
+          <img id="image3" src="paysage-3.jpg" alt="Paysage">
+        </div>
+      </div>
   		<noscript>
   			<p>Veuillez activer JavaScript</p>
   		</noscript>

@@ -29,30 +29,49 @@
       ***********************************
         Créez une page contenant trois images.
         À la fin du chargement du document, prévoyez le script suivant :
-        Au survol d'une image, masquez les autres images. Quand le survol cesse, revenez à l'été initial. Pour se faire, veillez à récupérer l'id de l'image survolée de telle façon à masquer toutes les images sauf celle survolée.
+        Au survol d'une image, masquez les autres images. Quand le survol cesse, revenez à l'état initial. Pour se faire, veillez à récupérer l'id de l'image survolée de telle façon à masquer toutes les images sauf celle survolée.
 
         Utilisez les méthodes hide(), show() mouseover() et attr().
-
-        */
-
-        $(function() {
-
-        $('img').mouseover(function() {
-         console.log($('this'))
-          $('img:not($("this"))').hide('fast');
-
-        })
-
-});
-
+      */
+      $(function() {
+        $('img')
+          .mouseenter(function() {
+            let cible = $(this).attr('id');
+            $('img').hide();
+            $('#' + cible).show();
+          })
+          .mouseleave(function() {
+            $('img').show();
+          });
+      });
     </script>
+    <style>
+      .conteneur {
+        display: flex;
+        width: 100%;
+      }
+
+      .conteneur div{
+        flex-basis: 33.333%;
+      }
+
+      img {
+        width: 300px;
+      }
+    </style>
 	</head>
 	<body>
-
-    <img id = "image-1" src="chat.png" alt="petit chat">
-    <img id = "image-2" src="grandChat.jpg" alt="grand chat">
-    <img id = "image-3" src="ours.jpeg" alt="">
-
+    <div class="conteneur">
+      <div>
+        <img id="image1" src="paysage-1.jpg" alt="Paysage">
+      </div>
+      <div>
+        <img id="image2" src="paysage-2.jpg" alt="Paysage">
+      </div>
+      <div>
+        <img id="image3" src="paysage-3.jpg" alt="Paysage">
+      </div>
+    </div>
 		<noscript>
 			<p>Veuillez activer JavaScript</p>
 		</noscript>

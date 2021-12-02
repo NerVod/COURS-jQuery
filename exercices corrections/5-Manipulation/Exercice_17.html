@@ -27,13 +27,14 @@
 			  Utilisez les méthodes each(), focus() et text().
 			*/
 			$(function() {
-
-
-
-
-
+				$('input').focus(function() {
+					let datas = '';
+					$('input:not([type="submit"],[type="radio"])').each(function(){
+						datas += $(this).val() + ' ';
+					});
+					$('#message').text(datas);
+				});
 			});
-
 		</script>
 	</head>
 	<body>

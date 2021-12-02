@@ -1,0 +1,11 @@
+.diaporama {
+  margin-left: 10%;
+  overflow: hidden;
+  position: relative;
+  width: 80%;
+}
+
+.diaporama img{
+  position: absolute;
+  width: 100%;
+}

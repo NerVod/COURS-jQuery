@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>jQuery : Exercice 16</title>
+		<script src="../jquery.js"></script>
+		<script>
+      /*********************************
+      ***********PRESENTATION***********
+      **********************************
+        jQuery permet d'ajouter du contenu avant ou après un élément de la façon suivante :
+        _ append() : insère du contenu à la fin de la sélection ;
+      	_ prepend() : insère du contenu au début de la sélection ;
+      	_ before() : insère du contenu avant la sélection ;
+      	_ after() : insère du contenu après la sélection.*/
+
+      /**********************************
+      *************EXERCICES*************
+      ***********************************
+      ** 1 **
+      	Créez une page contenant trois ensembles titre / paragraphe.
+      	Ajoutez un trait de séparation (<hr/>) au chargement du document.
+
+      	Utilisez la méthode after().
+      */
+		$(function() {
+			$('p').after('<hr>');
+      /*
+      ** 2 **
+      	Ajoutez une image entre deux paragraphes. Au chargement du document, un cercle plein est placé à chaque coin de l'image, derrière celle-ci (indice : mettez l'image dans une div. Cette div contiendra quatre span positionnées aux angles de cette div).
+
+      	Utilisez prepend() et append().
+      */
+			$('.image').prepend('<span class="un"></span><span class="deux"></span>').append('<span class="trois"></span><span class="quatre"></span>')
+	  			
+		});
+		</script>
+		<style>
+			.image {
+				display: inline-block;
+				margin-left: 10%;
+				position: relative;
+			}
+
+			.image span {
+				background: salmon;
+				border-radius: 50%;
+				height: 40px;
+				position: absolute;
+				width: 40px;
+			}
+
+			.un {
+				left: -20px;
+				top: -20px;
+			}
+
+			.deux {
+				right: -20px;
+				top: -20px;
+			}
+
+			.trois {
+				bottom: -20px;
+				left: -20px;
+			}
+
+			.quatre {
+				bottom: -20px;
+				right: -20px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Exercice 16</h1>
+		<h2>Sous-titre 1</h2>
+		<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, deserunt perspiciatis! Quisquam, ipsam odio. Aut fugiat voluptatibus sequi corporis hic explicabo, magnam quae impedit nulla voluptas libero maxime assumenda vel!</p>
+		<h2>Sous-titre 2</h2>
+		<p>Est explicabo corrupti adipisci sit consequatur quis quo commodi nam, libero numquam velit ex animi labore. Nostrum facere commodi quas odit quis maiores harum aut aperiam omnis. Nisi, iure modi.</p>
+		<div class="image">
+			<img src="paysage-1.jpg" alt="Paysage de montagne">
+		</div>
+		<h2>Sous-titre 3</h2>
+		<p>Assumenda, modi. Ullam adipisci hic recusandae ipsa assumenda est error, iste molestiae dolores, sint veritatis quaerat, id nesciunt sunt soluta quidem delectus nostrum praesentium ipsum atque quos? Voluptatum, ad reprehenderit.</p>
+		<noscript>
+			<p>Veuillez activer JavaScript</p>
+		</noscript>
+	</body>
+</html>

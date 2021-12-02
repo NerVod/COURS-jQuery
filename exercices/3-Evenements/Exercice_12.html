@@ -51,29 +51,15 @@
 
 			
 
-			/////////// ?????????????????????  affichage longueur du paragraphe survolé
+			
 
 			$('p').mouseenter(function (){
-				var paragraphe = $("p",this ).text().length;
-				console.log(paragraphe);
-				$('h1').text(paragraphe)
+				var paragraphe = $(this ,"p").text();
+				var longueur = paragraphe.length;
+				console.log(longueur);
+				$('h1').text(longueur)
 
 			});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 			})
 
@@ -89,6 +75,8 @@
 			.cache {
 				visibility: hidden
 			}
+
+
 		</style>
 	</head>
 	<body>
@@ -203,6 +191,42 @@
 				$('h1').text(paragraphe)
 
 			});
+
+			var uneDiv = window.document.createElement('div');
+			uneDiv.classList = 'maDiv';
+			uneDiv.style.position = 'absolute';
+			uneDiv.style.top = '200px';
+			
+			var unMessage = window.document.createElement('p');
+			unMessage.innerHTML = 'Un message à fermer';
+			var unBouton = window.document.createElement('button');
+			window.document.body.appendChild(uneDiv);
+			$('.maDiv').append(unMessage);
+			$('.maDiv').append(unBouton);
+			
+			unBouton.style.top = 0;
+			unBouton.style.right = 0;
+			unBouton.name = 'fermer';
+			unBouton.value = 'fermer';
+			unBouton.classList = 'monBouton';
+			unBouton.style.width = '100px';
+			unBouton.style.height = '25px';
+			unBouton.innerHTML = 'fermer'
+
+			
+			
+			$('p').mouseleave(function() {
+				$('h1').text('Titre du site');
+				window.setTimeout( function(){
+					$('.maDiv').css('visibility', 'visible')
+				},1000)
+			});
+
+			$('.monBouton').click(function() {
+
+				$('.maDiv').css('visibility', 'hidden')
+			}
+			);
 		</script>
 	</body>
 </html>

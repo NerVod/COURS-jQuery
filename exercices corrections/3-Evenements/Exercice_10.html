@@ -2,41 +2,91 @@
 <html>
 	<head>
 		<meta charset="utf-8"/>
-		<title>jQuery : Exercice 17</title>
+		<title>jQuery : Exercice 10</title>
 		<link rel="stylesheet" href="../src/styles.css">
 		<script src="../jquery.js"></script>
 		<script>
-			/*********************************
-			***********PRESENTATION***********
-			**********************************
-			  Il est souvent utile de parcourir les éléments sélectionnés. C'est ce que permet de faire la méthode each().
-			  Par exemple :
-			  $('p').each(function(){
-			    var texte = $(this).html();
-			    $(this).html() = texte + ' un ajout';
-			  });
-			  Ici, tous les paragraphes sont parcourus et le texte ' un ajout' est ajouté à la fin de chaque paragraphe.
-			*/
+      /*********************************
+      ***********PRESENTATION***********
+      **********************************
+        Les méthodes resize() et scroll() permettent de capturer des événements dans le navigateur et déclencher à chaque fois une fonction.
+        resize() : taille de la fenêtre
+        scroll() : mouvement d'un ascenseur.
+      */
 
-			/**********************************
-			*************EXERCICES*************
-			***********************************
-			  À la fin du chargement du document, prévoyez le script suivant :
-			  Quand l'utilisateur change de balise input, l'ensemble des valeurs qu'il a saisit sont affichées dans la div message.
+      /**********************************
+      *************EXERCICES*************
+      ***********************************
+      ** 1 **
+        À la fin du chargement du document, prévoyez le script suivant :
+        a) Chaque fois que vous redimensionnez la fenêtre du navigateur, vous récupérez la largeur du body.
+        b) Si la largeur est inférieure ou égale à 920px, modifiez la disposition des colonnes du texte
+        c) Si la largeur est inférieure ou égale à 640px, réduisez la taille de la police
+        d) Si la largeur est supérieure à 920px, remettez le style dans l'état initial.
 
-			  Utilisez les méthodes each(), focus() et text().
-			*/
-			$(function() {
-
-
-
-
-
+        Utilisez les méthodes resize(), css(), addClass() et removeClass().
+      */
+		let cibles = {};
+		$(function() {
+			cibles.$body = $('body');
+			cibles.$sectionDiv = $('section div');
+			$(window).resize(function() {
+				let largeur = parseFloat(cibles.$body.css('width'));
+				if (largeur <= 920) {
+					cibles.$sectionDiv.addClass('changement-colonne')
+					if (largeur <= 640) {
+						cibles.$body.addClass('petite-police');
+					}
+				} else {
+					cibles.$body.removeClass('petite-police');
+					cibles.$sectionDiv.removeClass('changement-colonne');
+				}
 			});
+      /*
+      ** 2 **
+        À la fin du chargement du document, prévoyez le script suivant :
+        a) Chaque fois que vous utilisez l'ascenseur vertical, affichez une petite image sur le bord gauche et au milieu (utilisez fixed en css).
+        b) Quand le mouvement s'arrête, masquez cette image.
 
+        Utilisez les méthodes scroll() et css().
+      */
+			cibles.$img = $('img');
+			let arret;
+			$(window).scroll(function() {
+				cibles.$img.css('display','inline');
+				if (arret) {
+					clearTimeout(arret);
+				}
+				arret = setTimeout(function() {
+					cibles.$img.css('display','none');
+				},400);
+			});
+		});
 		</script>
+		<style>
+			.petite-police {
+				font-size: .9em;
+			}
+
+			.changement-colonne {
+				flex-wrap: wrap;
+			}
+
+			.changement-colonne p {
+				flex-basis: 100%;
+			}
+
+			[src="fusee.png"] {
+				display: none;
+				height: 160px;
+				left: 5px;
+				position: fixed;
+				top: calc(50% - 80px);
+			}
+		</style>
 	</head>
 	<body>
+		<img src="fusee.png" alt="Fusée">
 		<div id="page">
 			<header>
 				<h1>Titre du site</h1>
@@ -71,7 +121,6 @@
 				</nav>
 			</header>
 			<section>
-				<div id="message"></div>
 				<p>
 					Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
 				</p>
